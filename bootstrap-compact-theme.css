@@ -1,0 +1,330 @@
+// Variables
+$primary: #00aeef;
+$primary-rgb: 0, 174, 239;
+$primary-darker: darken($primary, 10%);
+$primary-lighter: lighten($primary, 10%);
+
+$dark-bg: #121212;
+$dark-surface: #1e1e1e;
+$dark-surface-2: #2c2c2c;
+$dark-surface-3: #333333;
+$dark-border: #404040;
+$dark-text: #e0e0e0;
+$dark-text-secondary: #a0a0a0;
+
+$font-family-base: "Barclays Effra", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-size-base: 0.875rem;
+$font-size-sm: 0.75rem;
+$font-size-lg: 1rem;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+
+// Root Variables
+:root {
+  // Typography
+  --bs-body-font-family: #{$font-family-base};
+  --bs-font-sans-serif: #{$font-family-base};
+  --bs-body-font-size: #{$font-size-base};
+  --bs-font-size-sm: #{$font-size-sm};
+  --bs-font-size-lg: #{$font-size-lg};
+  --bs-body-font-weight: #{$font-weight-normal};
+  --bs-headings-font-weight: #{$font-weight-medium};
+  
+  // Colors
+  --primary: #{$primary};
+  --primary-rgb: #{$primary-rgb};
+  --primary-darker: #{$primary-darker};
+  --primary-lighter: #{$primary-lighter};
+  
+  // Dark Theme
+  --dark-bg: #{$dark-bg};
+  --dark-surface: #{$dark-surface};
+  --dark-surface-2: #{$dark-surface-2};
+  --dark-surface-3: #{$dark-surface-3};
+  --dark-border: #{$dark-border};
+  --dark-text: #{$dark-text};
+  --dark-text-secondary: #{$dark-text-secondary};
+  
+  // Bootstrap Overrides
+  --bs-primary: var(--primary);
+  --bs-primary-rgb: var(--primary-rgb);
+  --bs-body-color: var(--dark-text);
+  --bs-body-bg: var(--dark-bg);
+  --bs-border-color: var(--dark-border);
+}
+
+// Mixins
+@mixin hover-focus {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+// Base Styles
+body {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  font-family: var(--bs-body-font-family);
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--bs-body-font-family);
+  font-weight: var(--bs-headings-font-weight);
+}
+
+// Layout
+.container,
+.container-fluid {
+  padding: {
+    left: 0.75rem;
+    right: 0.75rem;
+  }
+}
+
+.row {
+  margin: {
+    left: -0.5rem;
+    right: -0.5rem;
+  }
+}
+
+.col,
+[class*="col-"] {
+  padding: {
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+// Cards
+.card {
+  background-color: var(--dark-surface);
+  border-color: var(--dark-border);
+  margin-bottom: 0.75rem;
+  
+  &-body {
+    padding: 0.75rem;
+  }
+  
+  &-header,
+  &-footer {
+    background-color: var(--dark-surface-2);
+    border-color: var(--dark-border);
+    padding: 0.5rem 0.75rem;
+  }
+  
+  &-title {
+    font-family: var(--bs-body-font-family);
+    font-weight: var(--bs-headings-font-weight);
+  }
+}
+
+// Forms
+.form-control {
+  background-color: var(--dark-surface-2);
+  border-color: var(--dark-border);
+  color: var(--dark-text);
+  font-family: var(--bs-body-font-family);
+  min-height: 2rem;
+  padding: 0.25rem 0.5rem;
+  
+  &:focus {
+    background-color: var(--dark-surface-2);
+    border-color: var(--primary);
+    color: var(--dark-text);
+  }
+  
+  &::placeholder {
+    color: var(--dark-text-secondary);
+  }
+  
+  &-sm {
+    padding: 0.15rem 0.3rem;
+    min-height: 1.5rem;
+    font-size: $font-size-sm;
+  }
+  
+  &-lg {
+    padding: 0.375rem 0.75rem;
+    min-height: 2.5rem;
+    font-size: $font-size-lg;
+  }
+}
+
+.form-select {
+  @extend .form-control;
+  padding-right: 1.75rem;
+  
+  &-sm {
+    padding: 0.15rem 1.5rem 0.15rem 0.3rem;
+    min-height: 1.5rem;
+    font-size: $font-size-sm;
+  }
+  
+  &-lg {
+    padding: 0.375rem 2rem 0.375rem 0.75rem;
+    min-height: 2.5rem;
+    font-size: $font-size-lg;
+  }
+}
+
+.form-check {
+  min-height: 1.25rem;
+  padding-left: 1.4rem;
+  margin-bottom: 0.25rem;
+  
+  &-input {
+    background-color: var(--dark-surface-2);
+    border-color: var(--dark-border);
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.125rem;
+    margin-left: -1.4rem;
+    
+    &:checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+  }
+  
+  &-label {
+    font-family: var(--bs-body-font-family);
+    font-size: $font-size-base;
+    line-height: 1.25;
+  }
+}
+
+// Buttons
+.btn {
+  font-family: var(--bs-body-font-family);
+  padding: 0.25rem 0.75rem;
+  font-size: $font-size-base;
+  
+  &-sm {
+    padding: 0.15rem 0.5rem;
+    font-size: $font-size-sm;
+  }
+  
+  &-lg {
+    padding: 0.375rem 1rem;
+    font-size: $font-size-lg;
+  }
+  
+  &-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    
+    @include hover-focus {
+      background-color: var(--primary-darker);
+      border-color: var(--primary-darker);
+    }
+  }
+  
+  &-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+    
+    @include hover-focus {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+  }
+}
+
+// Tables
+.table {
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+  
+  > :not(caption) > * > * {
+    padding: 0.4rem;
+  }
+  
+  &-sm > :not(caption) > * > * {
+    padding: 0.25rem;
+  }
+  
+  &-striped > tbody > tr:nth-of-type(odd) {
+    background-color: var(--dark-surface-2);
+  }
+  
+  &-hover > tbody > tr:hover {
+    background-color: var(--dark-surface-3);
+  }
+}
+
+// Navigation
+.nav {
+  &-tabs {
+    border-color: var(--dark-border);
+    
+    .nav-link {
+      &.active {
+        background-color: var(--dark-surface);
+        border-color: var(--dark-border);
+        color: var(--primary);
+      }
+      
+      @include hover-focus {
+        border-color: var(--dark-border);
+        isolation: isolate;
+      }
+    }
+  }
+  
+  &-link {
+    font-family: var(--bs-body-font-family);
+    padding: 0.375rem 0.75rem;
+  }
+}
+
+// Modals
+.modal {
+  &-content {
+    background-color: var(--dark-surface);
+    border-color: var(--dark-border);
+  }
+  
+  &-header,
+  &-footer {
+    border-color: var(--dark-border);
+    padding: 0.75rem;
+  }
+  
+  &-body {
+    padding: 0.75rem;
+  }
+}
+
+// Additional Components
+.alert-primary {
+  background-color: rgba(var(--primary-rgb), 0.15);
+  border-color: rgba(var(--primary-rgb), 0.3);
+  color: var(--primary-lighter);
+}
+
+.dropdown {
+  &-menu {
+    background-color: var(--dark-surface-2);
+    border-color: var(--dark-border);
+  }
+  
+  &-item {
+    color: var(--dark-text);
+    font-family: var(--bs-body-font-family);
+    
+    @include hover-focus {
+      background-color: var(--dark-surface-3);
+      color: var(--dark-text);
+    }
+  }
+}
+
+// Utilities
+.badge {
+  font-family: var(--bs-body-font-family);
+  padding: 0.25em 0.5em;
+}
